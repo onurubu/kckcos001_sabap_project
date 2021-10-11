@@ -1,5 +1,16 @@
 # setwd("C:/Users/01429358/Documents/R")
 library(emmeans)
+library(nlme)
+library(lme4)
+library(MASS) # to call quasi families
+library(effects) # for plotting mixed effect models
+
+# model selection:
+library(MuMIn) # for model ranking using AIC scores
+library(AICcmodavg) # for model averaging (what you might not need for now)l
+library(dplyr)
+library(Rcpp) # the glm below seems to need to added in to work for some reason
+
 sabap12all <- read.csv("merged_SABAP_onlySA_WORKS.csv", header=TRUE, sep=",", fill=TRUE, row.names=NULL, strip.white=TRUE)
 str(sabap12all)
 sabap12all$periodcat <- as.factor(sabap12all$period)
