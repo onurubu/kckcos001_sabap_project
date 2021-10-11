@@ -1,16 +1,14 @@
-
-
-ME <- read.csv("~/Teaching/BIO2019S Quantitative Biology/BIO3019S projects/BIO3019S project Amar/142ME.csv")
- View(ME)
+ME <- read.csv("142ME.csv")
+ # View(ME)
 
 
 
- #install.packages("Rcpp")
- #install.packages("nlme")
- #install.packages("lme4")
- #install.packages("effects")
- #install.packages("MuMIn")
- #install.packages("AICcmodavg")
+ # install.packages("Rcpp")
+ # install.packages("nlme")
+ # install.packages("lme4")
+ # install.packages("effects")
+ # install.packages("MuMIn")
+ # install.packages("AICcmodavg")
 
 
 library(nlme)
@@ -23,7 +21,6 @@ library(MuMIn) # for model ranking using AIC scores
 library(AICcmodavg) # for model averaging (what you might not need for now)l
 library(dplyr)
 library(Rcpp) # the glm below seems to need to added in to work for some reason
-
 
 
 
@@ -65,11 +62,7 @@ str(ME3)
 
 ME3$year <- as.numeric(ME3$year)
   
-  
-
-m1 <- glm(bin ~ year + Pentad , family = binomial, data=ME3) # instead this controls for pentad as a fixed effect
+  m1 <- glm(bin ~ year + Pentad , family = binomial, data=ME3) # instead this controls for pentad as a fixed effect
 #m1 <- glmer(bin ~ year + (1|Pentad), family = binomial, data=ME3) - this is a mixed effects model - but takes too long to run
 summary (m1)
 plot(allEffects(m1))
-
-

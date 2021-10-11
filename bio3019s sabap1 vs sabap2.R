@@ -1,11 +1,6 @@
-
-
-setwd("C:/Users/01429358/Documents/R")
-
-ME <- read.csv("~/Teaching/BIO2019S Quantitative Biology/BIO3019S projects/BIO3019S project Amar/142ME.csv")
-
-
-sabap12all <- read.csv("~/Teaching/BIO2019S Quantitative Biology/BIO3019S projects/BIO3019S project Amar/merged_SABAP_onlySA_WORKS.csv", header=TRUE, sep=",", fill=TRUE, row.names=NULL, strip.white=TRUE)
+# setwd("C:/Users/01429358/Documents/R")
+library(emmeans)
+sabap12all <- read.csv("merged_SABAP_onlySA_WORKS.csv", header=TRUE, sep=",", fill=TRUE, row.names=NULL, strip.white=TRUE)
 str(sabap12all)
 sabap12all$periodcat <- as.factor(sabap12all$period)
 
@@ -18,7 +13,7 @@ sabap12all$periodcat <- as.factor(sabap12all$period)
 #here you subset the different species
   VEdata=subset(sabap12all, common.name == "Verreaux'sEagle") #subset species data
   MEdata=subset(sabap12all, common.name == "MartialEagle")
-  MartialEagle
+  # MartialEagle
   
   
   
@@ -29,7 +24,7 @@ sabap12all$periodcat <- as.factor(sabap12all$period)
   # the emmeans gives you the back transformed reporting rates for each period category
   emm <- emmeans(M1, "periodcat", type="response")
   emm
-  eff_size(emm, sigma = sigma(M1), edf = df.residual(M1))#
+  eff_size(emm, sigma = sigma(M1), edf = df.residual(M1))
   
   M2=glm(cbind(sightings, (cards-sightings))~periodcat, family=quasibinomial, data=MEdata) 
   summary(M2)
@@ -38,5 +33,5 @@ sabap12all$periodcat <- as.factor(sabap12all$period)
   
   emm <- emmeans(M2, "periodcat", type="response")
   emm
-  eff_size(emm, sigma = sigma(M2), edf = df.residual(M2))#
+  eff_size(emm, sigma = sigma(M2), edf = df.residual(M2))
   
