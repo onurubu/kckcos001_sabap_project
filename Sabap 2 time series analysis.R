@@ -1,4 +1,4 @@
-ME <- read.csv("142ME.csv")
+ME <- read.csv("Secretarybird.csv")
  # View(ME)
 
 
@@ -24,16 +24,19 @@ library(Rcpp) # the glm below seems to need to added in to work for some reason
 
 
 
-ME$year<- substring(ME$StartDate ,7,10) # this just pulls out the year variable from the date column
+ME$year<- substring(ME$StartDate ,1,4) # this just pulls out the year variable from the date column
 
-ME$month<- substring(ME$StartDate ,4,5) # this just pulls out the month variable from the date column
+ME$month<- substring(ME$StartDate ,6,7) # this just pulls out the month variable from the date column
 # we might want to explore controlling for this variable
 
 ME$year<- as.numeric(ME$year) # this makes sure year is treated as a continuous term
 str(ME) # this looks at the structure of the df
 summary(ME) # summary of the df
 
-  
+ME$bin <- for (i in 1:length(ME[,1])){
+  if (ME[i,"Spp"]=="105"){ ME[i,25]=1 }
+  else {ME[i,25]=0}
+}  
 
 
 mess<- subset(ME, Pentad %in% unique(Pentad[bin == 1])) # this selects only those pentads where the species has ever been present
