@@ -90,6 +90,7 @@ for (k in 1:nrow(spp)){
 ## These functions show you the model output and the plot of the model:
   # summary (m1)
   # plot(allEffects(m1))
+
 ## These lines should be copied, replacing "m1" with the name of the desired model
   
   #Bateleur
@@ -110,11 +111,11 @@ for (k in 1:nrow(spp)){
     
     #AfricanMarsh-harrier
     summary(`M_167_AfricanMarsh-harrier`)
-    plot(allEffects(`M_167_AfricanMarsh-harrier`))
+    plot(allEffects(`M_167_AfricanMarsh-harrier`)) #large decrease
     
     #BlackHarrier
     summary(M_169_BlackHarrier)
-    plot(allEffects(M_169_BlackHarrier))
+    plot(allEffects(M_169_BlackHarrier)) #large decrease
     
     #BatHawk
     summary(M_131_BatHawk)
@@ -147,4 +148,5 @@ for (k in 1:nrow(spp)){
     #White-headedVulture
     summary(`M_109_White-headedVulture`)
     plot(allEffects(`M_109_White-headedVulture`))
+    
     
