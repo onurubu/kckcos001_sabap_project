@@ -90,6 +90,7 @@ for (k in 1:nrow(spp)){
 ## These functions show you the model output and the plot of the model:
   # summary (m1)
   # plot(allEffects(m1))
+
 ## These lines should be copied, replacing "m1" with the name of the desired model
   
   #Bateleur
