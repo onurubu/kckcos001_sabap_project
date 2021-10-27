@@ -1,48 +1,173 @@
-# setwd("C:/Users/01429358/Documents/R")
-library(emmeans)
-library(nlme)
-library(lme4)
-library(MASS) # to call quasi families
-library(effects) # for plotting mixed effect models
+####  COŞKUN KÜÇÜKKARAGÖZ SABAP 1 vs 2 COMPARISON ANALYSIS
 
-# model selection:
-library(MuMIn) # for model ranking using AIC scores
-library(AICcmodavg) # for model averaging (what you might not need for now)l
-library(dplyr)
-library(Rcpp) # the glm below seems to need to added in to work for some reason
+####  INITIAL SETUP ####
+## Installing required packages, this only needs to be run once, afterwards these lines can be commented out
+# install.packages("emmeans")
+# {install.packages("Rcpp")
+# install.packages("nlme")
+# install.packages("lme4")
+# install.packages("effects")
+# install.packages("MuMIn")
+# install.packages("AICcmodavg")
+# install.packages("dplyr")
+# install.packages("beepr")} #this package is only required if you want your PC to play a sound when your model creation is finished
 
-sabap12all <- read.csv("merged_SABAP_onlySA_WORKS.csv", header=TRUE, sep=",", fill=TRUE, row.names=NULL, strip.white=TRUE)
-str(sabap12all)
-sabap12all$periodcat <- as.factor(sabap12all$period)
+## Calling required packages
+{library(nlme)
+  library(lme4)
+  library(MASS) # to call quasi families
+  library(effects) # for plotting mixed effect models
+  library(beepr) #this package is only required if you want your PC to play a sound when your model creation is finished
+  
+  # model selection:
+  library(MuMIn) # for model ranking using AIC scores
+  library(AICcmodavg) # for model averaging (what you might not need for now)
+  library(dplyr)
+  library(Rcpp)
+  library(emmeans)} # the glm below seems to need to added in to work for some reason
+## Read the data in
+{sabap12all <- read.csv("merged_SABAP_onlySA_WORKS.csv", header=TRUE, sep=",", fill=TRUE, row.names=NULL, strip.white=TRUE)
+sabap12all$periodcat <- as.factor(sabap12all$period)}
 
 
 #speciesnames=unique(sabap12all$common.name)   #make a list of all the species name you need to loop through.
 #modelresults=NULL  #this is an empty object where your results will be saved
 
+## Setting up a data frame of the species being analysed, one column holding their SABAP 2 ID, and another holding their given name according to the SABAP 1 vs 2 data
+{ num <- c(151,142,147,134,167,169,131,370,150,106,110,108,107,109) # currently missing Taita Falcon
+  name <- c("BateleurBateleur","MartialEagle","Southern BandedSnake-eagle","TawnyEagle","AfricanMarsh-harrier","BlackHarrier","BatHawk","Pel'sFishing-owl","BeardedVulture","CapeVulture","HoodedVulture","Lappet-facedVulture","White-backedVulture","White-headedVulture") # Species naming must be identical to the naming used in the SABAP 1 vs 2 data
+  spp <- cbind(num,name)
+  spp <- data.frame(spp)
+  spp$num<- as.character(spp$num)
+  rm(name,num) }
 
+# here you subset the different species
+for (l in 1:nrow(spp)){
+  assign(paste0(spp[l,2],"_data"),subset(sabap12all, common.name == paste0(spp[l,2])))
+  assign(paste0("S1v2_",spp[l,2]),glm(cbind(sightings, (cards-sightings))~periodcat, family=quasibinomial, data=get(paste0(spp[l,2],"_data"))))
+  {if (l==nrow(spp)){beep(3)}} 
+}
 
-#here you subset the different species
-  VEdata=subset(sabap12all, common.name == "Verreaux'sEagle") #subset species data
-  MEdata=subset(sabap12all, common.name == "MartialEagle")
+#### MODEL ANALYSIS ####
+
+## summary and plot of all fitted models
+  
+  # BateleurBateleur
+  summary(S1v2_BateleurBateleur)
+  plot(allEffects(S1v2_BateleurBateleur),main=paste0(spp[1,2])) # this plots out the effects
+  
   # MartialEagle
+  summary(S1v2_MartialEagle)
+  plot(allEffects(S1v2_MartialEagle),main=paste0(spp[2,2])) # this plots out the effects
   
+  # Southern BandedSnake-eagle
+  summary(`S1v2_Southern BandedSnake-eagle`)
+  plot(allEffects(`S1v2_Southern BandedSnake-eagle`),main=paste0(spp[3,2])) # this plots out the effects
   
+  # TawnyEagle
+  summary(S1v2_TawnyEagle)
+  plot(allEffects(S1v2_TawnyEagle),main=paste0(spp[4,2])) # this plots out the effects
   
-  M1=glm(cbind(sightings, (cards-sightings))~periodcat, family=quasibinomial, data=VEdata) 
-  summary(M1)
-  plot(allEffects(M1)) # this plots out the effects
+  # AfricanMarsh-harrier
+  summary(`S1v2_AfricanMarsh-harrier`)
+  plot(allEffects(`S1v2_AfricanMarsh-harrier`),main=paste0(spp[5,2])) # this plots out the effects
   
-  # the emmeans gives you the back transformed reporting rates for each period category
-  emm <- emmeans(M1, "periodcat", type="response")
-  emm
-  eff_size(emm, sigma = sigma(M1), edf = df.residual(M1))
+  # BlackHarrier
+  summary(S1v2_BlackHarrier)
+  plot(allEffects(S1v2_BlackHarrier),main=paste0(spp[6,2])) # this plots out the effects
   
-  M2=glm(cbind(sightings, (cards-sightings))~periodcat, family=quasibinomial, data=MEdata) 
-  summary(M2)
-  plot(allEffects(M2))
+  # BatHawk
+  summary(S1v2_BatHawk)
+  plot(allEffects(S1v2_BatHawk),main=paste0(spp[7,2])) # this plots out the effects
   
+  # Pel'sFishing-owl
+  summary(`S1v2_Pel'sFishing-owl`)
+  plot(allEffects(`S1v2_Pel'sFishing-owl`),main=paste0(spp[8,2])) # this plots out the effects
   
-  emm <- emmeans(M2, "periodcat", type="response")
-  emm
-  eff_size(emm, sigma = sigma(M2), edf = df.residual(M2))
+  # BeardedVulture
+  summary(S1v2_BeardedVulture)
+  plot(allEffects(S1v2_BeardedVulture),main=paste0(spp[9,2])) # this plots out the effects
+  
+  # CapeVulture
+  summary(S1v2_CapeVulture)
+  plot(allEffects(S1v2_CapeVulture),main=paste0(spp[10,2])) # this plots out the effects
+  
+  # HoodedVulture
+  summary(S1v2_HoodedVulture)
+  plot(allEffects(S1v2_HoodedVulture),main=paste0(spp[11,2])) # this plots out the effects
+  
+  # Lappet-facedVulture
+  summary(`S1v2_Lappet-facedVulture`)
+  plot(allEffects(`S1v2_Lappet-facedVulture`),main=paste0(spp[12,2])) # this plots out the effects
+  
+  # White-backedVulture
+  summary(`S1v2_White-backedVulture`)
+  plot(allEffects(`S1v2_White-backedVulture`),main=paste0(spp[13,2])) # this plots out the effects
+  
+  # White-headedVulture
+  summary(`S1v2_White-headedVulture`)
+  plot(allEffects(`S1v2_White-headedVulture`),main=paste0(spp[14,2])) # this plots out the effects
+  
+  # the emmeans gives you the ****back transformed**** reporting rates for each period category, eff size gives the difference between the means and associated confidence interval
+  for (h in 1:nrow(spp)){
+  assign(paste0(spp[h,2],"_emm"), emmeans(object = get(paste0("S1v2_",spp[h,2])), "periodcat", type="response"))
+  assign(paste0(spp[h,2],"_eff"),eff_size(get(paste0(spp[h,2],"_emm")), sigma = sigma(get(paste0("S1v2_",spp[h,2]))), edf = df.residual(get(paste0("S1v2_",spp[h,2])))))
+  }
+
+  
+  # BateleurBateleur
+  BateleurBateleur_emm #back transformed reporting rate for the category
+  BateleurBateleur_eff #difference between the means and associated confidence interval
+  
+  # MartialEagle
+  MartialEagle_emm #back transformed reporting rate for the category
+  MartialEagle_eff #difference between the means and associated confidence interval
+  
+  # Southern BandedSnake-eagle
+  `Southern BandedSnake-eagle_emm` #back transformed reporting rate for the category
+  `Southern BandedSnake-eagle_eff` #difference between the means and associated confidence interval
+  
+  # TawnyEagle
+  TawnyEagle_emm #back transformed reporting rate for the category
+  TawnyEagle_eff #difference between the means and associated confidence interval
+  
+  # AfricanMarsh-harrier
+  `AfricanMarsh-harrier_emm` #back transformed reporting rate for the category
+  `AfricanMarsh-harrier_eff` #difference between the means and associated confidence interval
+  
+  # BlackHarrier
+  BlackHarrier_emm #back transformed reporting rate for the category
+  BlackHarrier_eff #difference between the means and associated confidence interval
+  
+  # BatHawk
+  BatHawk_emm #back transformed reporting rate for the category
+  BatHawk_eff #difference between the means and associated confidence interval
+  
+  # Pel'sFishing-owl
+  `Pel'sFishing-owl_emm` #back transformed reporting rate for the category
+  `Pel'sFishing-owl_eff` #difference between the means and associated confidence interval
+  
+  # BeardedVulture
+  BeardedVulture_emm #back transformed reporting rate for the category
+  BeardedVulture_eff #difference between the means and associated confidence interval
+  
+  # CapeVulture
+  CapeVulture_emm #back transformed reporting rate for the category
+  CapeVulture_eff #difference between the means and associated confidence interval
+  
+  # HoodedVulture
+  HoodedVulture_emm #back transformed reporting rate for the category
+  HoodedVulture_eff #difference between the means and associated confidence interval
+  
+  # Lappet-facedVulture
+  `Lappet-facedVulture_emm` #back transformed reporting rate for the category
+  `Lappet-facedVulture_eff` #difference between the means and associated confidence interval
+  
+  # White-backedVulture
+  `White-backedVulture_emm` #back transformed reporting rate for the category
+  `White-backedVulture_eff` #difference between the means and associated confidence interval
+  
+  # White-headedVulture
+  `White-headedVulture_emm` #back transformed reporting rate for the category
+  `White-headedVulture_eff` #difference between the means and associated confidence interval
   

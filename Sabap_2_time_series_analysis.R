@@ -1,4 +1,4 @@
-####  COŞKUN KÜÇÜKKARAGÖZ SABAP 2 TIME SERIES ANALYSIS ####
+####  COŞKUN KÜÇÜKKARAGÖZ SABAP 2 TIME SERIES ANALYSIS
 
 ####  INITIAL SETUP ####
 
@@ -56,7 +56,6 @@
 #   bin_data <- bincol(infile)
 #   write.csv(bin_data, file = paste0("/home/onurubu/Desktop/UNI/2021/BIO3019S/Project - Arjun Amar/kckcos001_sabap_project/data_processed/",
 #                                   spp[j,1], "_", spp[j,2], ".csv")) # Should be changed to where you would like the output to be placed
-#   rm(bin_data)
 # }
 
 #### READING IN THE DATA, PROPERLY FORMATTING IT, AND CREATING THE MODELS ####
@@ -81,9 +80,6 @@ for (k in 1:nrow(spp)){
   #m1 <- glmer(bin ~ year + (1|Pentad), family = binomial, data = ME3) - this is a mixed effects model - but takes too long to run
   
   {if (k==nrow(spp)){beep(3)}}  #this line is only required if you want your PC to play a sound when your model creation is finished, if you don't have beepr installed you will receive an error, so be careful
-
-  rm(M2,M3,mess, xx, k)
-  
   }
 
 #### ANALYSING THE MODELS ####
@@ -149,5 +145,4 @@ for (k in 1:nrow(spp)){
     #White-headedVulture
     summary(`M_109_White-headedVulture`)
     plot(allEffects(`M_109_White-headedVulture`))
-    
     
