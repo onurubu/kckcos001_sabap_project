@@ -91,8 +91,8 @@ for (k in 1:nrow(spp)){
 ## These lines should be copied, replacing "m1" with the name of the desired model
   
   #Bateleur
-    summary(M_151_Bateleur)
-    plot(allEffects(M_151_Bateleur))
+    summary(M_151_BateleurBateleur)
+    plot(allEffects(M_151_BateleurBateleur))
     
     #MartialEagle
     summary(M_142_MartialEagle)
