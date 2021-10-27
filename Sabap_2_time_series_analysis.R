@@ -3,6 +3,7 @@
 ####  INITIAL SETUP ####
 
 ## Installing required packages, this only needs to be run once, afterwards these lines can be commented out
+  # install.packages("emmeans")
   # {install.packages("Rcpp")
   # install.packages("nlme")
   # install.packages("lme4")
@@ -27,7 +28,7 @@
 
 ## Setting up a data frame of the species being analysed, one column holding their SABAP 2 ID, and another holding their given name according to the SABAP 1 vs 2 data
   { num <- c(151,142,147,134,167,169,131,370,150,106,110,108,107,109) # currently missing Taita Falcon
-    name <- c("Bateleur","MartialEagle","Southern BandedSnake-eagle","TawnyEagle","AfricanMarsh-harrier","BlackHarrier","BatHawk","Pel'sFishing-owl","BeardedVulture","CapeVulture","HoodedVulture","Lappet-facedVulture","White-backedVulture","White-headedVulture") # Species naming must be identical to the naming used in the SABAP 1 vs 2 data
+    name <- c("BateleurBateleur","MartialEagle","Southern BandedSnake-eagle","TawnyEagle","AfricanMarsh-harrier","BlackHarrier","BatHawk","Pel'sFishing-owl","BeardedVulture","CapeVulture","HoodedVulture","Lappet-facedVulture","White-backedVulture","White-headedVulture") # Species naming must be identical to the naming used in the SABAP 1 vs 2 data
     spp <- cbind(num,name)
     spp <- data.frame(spp)
     spp$num<- as.character(spp$num)
