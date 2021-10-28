@@ -3,8 +3,8 @@
 ####  INITIAL SETUP ####
 
 ## Installing required packages, this only needs to be run once, afterwards these lines can be commented out
-  # install.packages("emmeans")
-  # {install.packages("Rcpp")
+  # {install.packages("emmeans")
+  # install.packages("Rcpp")
   # install.packages("nlme")
   # install.packages("lme4")
   # install.packages("effects")
@@ -90,59 +90,59 @@ for (k in 1:nrow(spp)){
 
 ## These lines should be copied, replacing "m1" with the name of the desired model
   
-  #Bateleur
+    #Bateleur
     summary(M_151_BateleurBateleur)
-    plot(allEffects(M_151_BateleurBateleur))
+    plot(allEffects(M_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
     
     #MartialEagle
     summary(M_142_MartialEagle)
-    plot(allEffects(M_142_MartialEagle))
+    plot(allEffects(M_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
     
     #Southern BandedSnake-eagle
     summary(`M_147_Southern BandedSnake-eagle`)
-    plot(allEffects(`M_147_Southern BandedSnake-eagle`))
+    plot(allEffects(`M_147_Southern BandedSnake-eagle`),main=paste0(spp[3,2]),selection = 1)
     
     #TawnyEagle
     summary(M_134_TawnyEagle)
-    plot(allEffects(M_134_TawnyEagle))
+    plot(allEffects(M_134_TawnyEagle),main=paste0(spp[4,2]),selection = 1)
     
     #AfricanMarsh-harrier
     summary(`M_167_AfricanMarsh-harrier`)
-    plot(allEffects(`M_167_AfricanMarsh-harrier`)) #large decrease
+    plot(allEffects(`M_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1) #large decrease
     
     #BlackHarrier
     summary(M_169_BlackHarrier)
-    plot(allEffects(M_169_BlackHarrier)) #large decrease
+    plot(allEffects(M_169_BlackHarrier),main=paste0(spp[6,2]),selection = 1) #large decrease
     
     #BatHawk
     summary(M_131_BatHawk)
-    plot(allEffects(M_131_BatHawk))
+    plot(allEffects(M_131_BatHawk),main=paste0(spp[7,2]),selection = 1)
     
     #Pel'sFishing-owl
     summary(`M_370_Pel'sFishing-owl`)
-    plot(allEffects(`M_370_Pel'sFishing-owl`))
+    plot(allEffects(`M_370_Pel'sFishing-owl`),selection = 1,main=paste0(spp[8,2]))
     
     #BeardedVulture
     summary(M_150_BeardedVulture)
-    plot(allEffects(M_150_BeardedVulture))
+    plot(allEffects(M_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
     
     #CapeVulture
     summary(M_106_CapeVulture)
-    plot(allEffects(M_106_CapeVulture))
+    plot(allEffects(M_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
     
     #HoodedVulture
     summary(M_110_HoodedVulture)
-    plot(allEffects(M_110_HoodedVulture))
+    plot(allEffects(M_110_HoodedVulture),selection = 1,main=paste0(spp[11,2]))
     
     #Lappet-facedVulture
     summary(`M_108_Lappet-facedVulture`)
-    plot(allEffects(`M_108_Lappet-facedVulture`))
+    plot(allEffects(`M_108_Lappet-facedVulture`),selection = 1,main=paste0(spp[12,2]))
     
     #White-backedVulture
     summary(`M_107_White-backedVulture`)
-    plot(allEffects(`M_107_White-backedVulture`))
+    plot(allEffects(`M_107_White-backedVulture`),selection = 1,main=paste0(spp[13,2]))
     
     #White-headedVulture
     summary(`M_109_White-headedVulture`)
-    plot(allEffects(`M_109_White-headedVulture`))
+    plot(allEffects(`M_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
     

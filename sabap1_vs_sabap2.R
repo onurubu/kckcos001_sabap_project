@@ -2,8 +2,8 @@
 
 ####  INITIAL SETUP ####
 ## Installing required packages, this only needs to be run once, afterwards these lines can be commented out
-# install.packages("emmeans")
-# {install.packages("Rcpp")
+# {install.packages("emmeans")
+# install.packages("Rcpp")
 # install.packages("nlme")
 # install.packages("lme4")
 # install.packages("effects")
@@ -54,59 +54,59 @@ for (l in 1:nrow(spp)){
   
   # BateleurBateleur
   summary(S1v2_BateleurBateleur)
-  plot(allEffects(S1v2_BateleurBateleur),main=paste0(spp[1,2])) # this plots out the effects
+  plot(allEffects(S1v2_BateleurBateleur),main=paste0(spp[1,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # MartialEagle
   summary(S1v2_MartialEagle)
-  plot(allEffects(S1v2_MartialEagle),main=paste0(spp[2,2])) # this plots out the effects
+  plot(allEffects(S1v2_MartialEagle),main=paste0(spp[2,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # Southern BandedSnake-eagle
   summary(`S1v2_Southern BandedSnake-eagle`)
-  plot(allEffects(`S1v2_Southern BandedSnake-eagle`),main=paste0(spp[3,2])) # this plots out the effects
+  plot(allEffects(`S1v2_Southern BandedSnake-eagle`),main=paste0(spp[3,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # TawnyEagle
   summary(S1v2_TawnyEagle)
-  plot(allEffects(S1v2_TawnyEagle),main=paste0(spp[4,2])) # this plots out the effects
+  plot(allEffects(S1v2_TawnyEagle),main=paste0(spp[4,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # AfricanMarsh-harrier
   summary(`S1v2_AfricanMarsh-harrier`)
-  plot(allEffects(`S1v2_AfricanMarsh-harrier`),main=paste0(spp[5,2])) # this plots out the effects
+  plot(allEffects(`S1v2_AfricanMarsh-harrier`),main=paste0(spp[5,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # BlackHarrier
   summary(S1v2_BlackHarrier)
-  plot(allEffects(S1v2_BlackHarrier),main=paste0(spp[6,2])) # this plots out the effects
+  plot(allEffects(S1v2_BlackHarrier),main=paste0(spp[6,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # BatHawk
   summary(S1v2_BatHawk)
-  plot(allEffects(S1v2_BatHawk),main=paste0(spp[7,2])) # this plots out the effects
+  plot(allEffects(S1v2_BatHawk),main=paste0(spp[7,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # Pel'sFishing-owl
   summary(`S1v2_Pel'sFishing-owl`)
-  plot(allEffects(`S1v2_Pel'sFishing-owl`),main=paste0(spp[8,2])) # this plots out the effects
+  plot(allEffects(`S1v2_Pel'sFishing-owl`),main=paste0(spp[8,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # BeardedVulture
   summary(S1v2_BeardedVulture)
-  plot(allEffects(S1v2_BeardedVulture),main=paste0(spp[9,2])) # this plots out the effects
+  plot(allEffects(S1v2_BeardedVulture),main=paste0(spp[9,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # CapeVulture
   summary(S1v2_CapeVulture)
-  plot(allEffects(S1v2_CapeVulture),main=paste0(spp[10,2])) # this plots out the effects
+  plot(allEffects(S1v2_CapeVulture),main=paste0(spp[10,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # HoodedVulture
   summary(S1v2_HoodedVulture)
-  plot(allEffects(S1v2_HoodedVulture),main=paste0(spp[11,2])) # this plots out the effects
+  plot(allEffects(S1v2_HoodedVulture),main=paste0(spp[11,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # Lappet-facedVulture
   summary(`S1v2_Lappet-facedVulture`)
-  plot(allEffects(`S1v2_Lappet-facedVulture`),main=paste0(spp[12,2])) # this plots out the effects
+  plot(allEffects(`S1v2_Lappet-facedVulture`),main=paste0(spp[12,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # White-backedVulture
   summary(`S1v2_White-backedVulture`)
-  plot(allEffects(`S1v2_White-backedVulture`),main=paste0(spp[13,2])) # this plots out the effects
+  plot(allEffects(`S1v2_White-backedVulture`),main=paste0(spp[13,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # White-headedVulture
   summary(`S1v2_White-headedVulture`)
-  plot(allEffects(`S1v2_White-headedVulture`),main=paste0(spp[14,2])) # this plots out the effects
+  plot(allEffects(`S1v2_White-headedVulture`),main=paste0(spp[14,2]),ylab="Reporting Rate",xlab="SABAP Edition") # this plots out the effects
   
   # the emmeans gives you the ****back transformed**** reporting rates for each period category, eff size gives the difference between the means and associated confidence interval
   for (h in 1:nrow(spp)){
