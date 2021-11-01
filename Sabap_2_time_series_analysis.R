@@ -11,6 +11,7 @@
   # install.packages("MuMIn")
   # install.packages("AICcmodavg")
   # install.packages("dplyr")
+  # install.packages("car")
   # install.packages("beepr")} #this package is only required if you want your PC to play a sound when your model creation is finished
 
 ## calling required packages
@@ -19,7 +20,7 @@
   library(MASS) # to call quasi families
   library(effects) # for plotting mixed effect models
   library(beepr) #this package is only required if you want your PC to play a sound when your model creation is finished
-
+  library(car)
   # model selection:
   library(MuMIn) # for model ranking using AIC scores
   library(AICcmodavg) # for model averaging (what you might not need for now)
@@ -76,8 +77,8 @@ for (k in 1:nrow(spp)){
   
   M3$year <- as.numeric(M3$year) # this makes sure year is treated as a continuous term
   dat <- assign(paste0("D_",spp[k,1],"_",spp[k,2]),M3)
-  #assign(paste0("M_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad , family = binomial, data = dat)) # this controls for pentad as a fixed effect
-  assign(paste0("Mo_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad + month , family = binomial, data = dat))
+  # assign(paste0("M_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad , family = binomial, data = dat)) # this controls for pentad as a fixed effect
+  # assign(paste0("Mo_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad + month , family = binomial, data = dat))
   #m1 <- glmer(bin ~ year + (1|Pentad), family = binomial, data = ME3) - this is a mixed effects model - but takes too long to run
   
   {if (k==nrow(spp)){beep(3)}}  #this line is only required if you want your PC to play a sound when your model creation is finished, if you don't have beepr installed you will receive an error, so be careful
