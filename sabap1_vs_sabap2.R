@@ -68,7 +68,6 @@ for (k in 1:nrow(spp)){
   {if (zz>1) {print(paste0(spp[k,2],": ",round(((zz-1)*100),4),"% increase in reporting rate between SABAP 1 and 2"))}}
   {if (zz==1) {print(paste0(spp[k,2],": There is no change in reporting rate between SABAP 1 and 2"))}}
   cat("\n")
-  rm(zz)
 }
 
 ## summary of all fitted models along with Anova for test of association of reporting rate and year
