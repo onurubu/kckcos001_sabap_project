@@ -95,7 +95,7 @@ for (k in 1:nrow(spp)){
     ### Bateleur
       summary(M_151_BateleurBateleur)
       plot(allEffects(M_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
-    
+      Anova(M_151_BateleurBateleur)
       # controlling for month
       summary(Mo_151_BateleurBateleur)
       plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
