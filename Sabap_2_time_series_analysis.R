@@ -77,8 +77,8 @@ for (k in 1:nrow(spp)){
   
   M3$year <- as.numeric(M3$year) # this makes sure year is treated as a continuous term
   dat <- assign(paste0("D_",spp[k,1],"_",spp[k,2]),M3)
-  # assign(paste0("M_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad , family = binomial, data = dat)) # this controls for pentad as a fixed effect
-  # assign(paste0("Mo_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad + month , family = binomial, data = dat))
+  assign(paste0("M_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad , family = binomial, data = dat)) # this controls for pentad as a fixed effect
+  assign(paste0("Mo_",spp[k,1],"_",spp[k,2]),glm(bin ~ year + Pentad + month , family = binomial, data = dat))
   #m1 <- glmer(bin ~ year + (1|Pentad), family = binomial, data = ME3) - this is a mixed effects model - but takes too long to run
   
   {if (k==nrow(spp)){beep(3)}}  #this line is only required if you want your PC to play a sound when your model creation is finished, if you don't have beepr installed you will receive an error, so be careful
@@ -99,107 +99,110 @@ for (k in 1:nrow(spp)){
       # controlling for month
       summary(Mo_151_BateleurBateleur)
       plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
-    
+      Anova(Mo_151_BateleurBateleur)
     ### MartialEagle
       summary(M_142_MartialEagle)
       plot(allEffects(M_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
-      
+      Anova(M_142_MartialEagle)
       # controlling for month
       summary(Mo_142_MartialEagle)
       plot(allEffects(Mo_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
-    
+      Anova(Mo_142_MartialEagle)
     ### Southern BandedSnake-eagle
       summary(`M_147_Southern BandedSnake-eagle`)
       plot(allEffects(`M_147_Southern BandedSnake-eagle`),main=paste0(spp[3,2]),selection = 1)
-      
+      Anova(`M_147_Southern BandedSnake-eagle`)
       # controlling for month
       summary(`Mo_147_Southern BandedSnake-eagle`)
       plot(allEffects(`Mo_147_Southern BandedSnake-eagle`),main=paste0(spp[3,2]), selection =1)
-      
+      Anova(`Mo_147_Southern BandedSnake-eagle`)
     ### TawnyEagle
       summary(M_134_TawnyEagle)
       plot(allEffects(M_134_TawnyEagle),main=paste0(spp[4,2]),selection = 1)
-      
+      Anova(M_134_TawnyEagle)
       # controlling for month
       summary(Mo_134_TawnyEagle)
       plot(allEffects(Mo_134_TawnyEagle),main=paste0(spp[4,2]),selection = 1)
-    
+      Anova(Mo_134_TawnyEagle)
     ### AfricanMarsh-harrier
       summary(`M_167_AfricanMarsh-harrier`)
       plot(allEffects(`M_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1) #large decrease
-      
+      Anova(`M_167_AfricanMarsh-harrier`)
       # controlling for month
       summary(`Mo_167_AfricanMarsh-harrier`)
       plot(allEffects(`Mo_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1)
-      
+      Anova(`Mo_167_AfricanMarsh-harrier`)
     ### BlackHarrier
       summary(M_169_BlackHarrier)
       plot(allEffects(M_169_BlackHarrier),main=paste0(spp[6,2]),selection = 1) #large decrease
-      
+      Anova(M_169_BlackHarrier)
       # controlling for month
       summary(Mo_169_BlackHarrier)
       plot(allEffects(Mo_169_BlackHarrier),main=paste0(spp[6,2]),selection = 1)
-      
+      Anova(Mo_169_BlackHarrier)
     ### BatHawk
       summary(M_131_BatHawk)
       plot(allEffects(M_131_BatHawk),main=paste0(spp[7,2]),selection = 1)
-      
+      Anova(M_131_BatHawk)
       #controlling for month
       summary(Mo_131_BatHawk)
       plot(allEffects(Mo_131_BatHawk),main=paste0(spp[7,2]),selection = 1)
-    
+      Anova(Mo_131_BatHawk)
     ### Pel'sFishing-owl
       summary(`M_370_Pel'sFishing-owl`)
       plot(allEffects(`M_370_Pel'sFishing-owl`),selection = 1,main=paste0(spp[8,2]))
+      Anova(`M_370_Pel'sFishing-owl`)
       # controlling for month
       summary(`Mo_370_Pel'sFishing-owl`)
       plot(allEffects(`Mo_370_Pel'sFishing-owl`),selection = 1,main=paste0(spp[8,2]))
-      
+      Anova(`Mo_370_Pel'sFishing-owl`)
     ### BeardedVulture
       summary(M_150_BeardedVulture)
       plot(allEffects(M_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
-      
+      Anova(M_150_BeardedVulture)
       #controlling for month
-      summary(M_150_BeardedVulture)
-      plot(allEffects(M_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
-      
+      summary(Mo_150_BeardedVulture)
+      plot(allEffects(Mo_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
+      Anova(Mo_150_BeardedVulture)
     ### CapeVulture
       summary(M_106_CapeVulture)
       plot(allEffects(M_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
-      
+      Anova(M_106_CapeVulture)
       # controlling for month
       summary(Mo_106_CapeVulture)
       plot(allEffects(Mo_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
-      
+      Anova(Mo_106_CapeVulture)
     ### HoodedVulture
       summary(M_110_HoodedVulture)
       plot(allEffects(M_110_HoodedVulture),selection = 1,main=paste0(spp[11,2]))
-      
+      Anova(M_110_HoodedVulture)
       # controlling for month
       summary(Mo_110_HoodedVulture)
       plot(allEffects(Mo_110_HoodedVulture),selection = 1,main=paste0(spp[11,2]))
-      
+      Anova(Mo_110_HoodedVulture)
     ### Lappet-facedVulture
       summary(`M_108_Lappet-facedVulture`)
       plot(allEffects(`M_108_Lappet-facedVulture`),selection = 1,main=paste0(spp[12,2]))
-      
+      Anova(`M_108_Lappet-facedVulture`)
       # controlling for month
       summary(`Mo_108_Lappet-facedVulture`)
       plot(allEffects(`Mo_108_Lappet-facedVulture`),selection = 1,main=paste0(spp[12,2]))
-      
+      Anova(`Mo_108_Lappet-facedVulture`)
     ### White-backedVulture
       summary(`M_107_White-backedVulture`)
       plot(allEffects(`M_107_White-backedVulture`),selection = 1,main=paste0(spp[13,2]))
-      
+      Anova(`M_107_White-backedVulture`)
       # controlling for month
       summary(`Mo_107_White-backedVulture`)
       plot(allEffects(`Mo_107_White-backedVulture`),selection = 1,main=paste0(spp[13,2]))
-      
+      Anova(`Mo_107_White-backedVulture`)
     ### White-headedVulture
       summary(`M_109_White-headedVulture`)
       plot(allEffects(`M_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
-      
+      Anova(`M_109_White-headedVulture`)
       # controlling for month
       summary(`Mo_109_White-headedVulture`)
       plot(allEffects(`Mo_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
+      Anova(`Mo_109_White-headedVulture`)
       
+#### END ####
