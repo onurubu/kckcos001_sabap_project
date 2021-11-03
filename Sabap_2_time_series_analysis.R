@@ -93,116 +93,210 @@ for (k in 1:nrow(spp)){
 ## These lines should be copied, replacing "m1" with the name of the desired model
   
     ### Bateleur
-      summary(M_151_BateleurBateleur)
-      plot(allEffects(M_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
-      Anova(M_151_BateleurBateleur)
+      # summary(M_151_BateleurBateleur)
+      # plot(allEffects(M_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
+      # Anova(M_151_BateleurBateleur)
       # controlling for month
-      summary(Mo_151_BateleurBateleur)
-      plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
+      summary(Mo_151_BateleurBateleur) # *** Significant
+      
+plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
       Anova(Mo_151_BateleurBateleur)
+      
+      {r <-  exp(predict(Mo_151_BateleurBateleur,newdata = list(year=2017,Pentad="1755_2550",month="05")))/exp(predict(Mo_151_BateleurBateleur,newdata = list(year=2016,Pentad="1755_2550",month="05"))) 
+      {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+      {if(r==1){print(paste0("No Change over year"))}}
+      {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+        
+      # {r <- as.numeric(exp(Mo_151_BateleurBateleur$coefficients[2]))
+      # {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+      # {if(r==1){print(paste0("No Change over year"))}}
+      # {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+
     ### MartialEagle
-      summary(M_142_MartialEagle)
-      plot(allEffects(M_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
-      Anova(M_142_MartialEagle)
+      # summary(M_142_MartialEagle)
+      # plot(allEffects(M_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
+      # Anova(M_142_MartialEagle)
       # controlling for month
       summary(Mo_142_MartialEagle)
       plot(allEffects(Mo_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
       Anova(Mo_142_MartialEagle)
+      
+        {r <-  exp(predict(Mo_142_MartialEagle,newdata = list(year=2017,Pentad="2850_2955",month="05")))/exp(predict(Mo_142_MartialEagle,newdata = list(year=2016,Pentad="2850_2955",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### Southern BandedSnake-eagle
-      summary(`M_147_Southern BandedSnake-eagle`)
-      plot(allEffects(`M_147_Southern BandedSnake-eagle`),main=paste0(spp[3,2]),selection = 1)
-      Anova(`M_147_Southern BandedSnake-eagle`)
+      # summary(`M_147_Southern BandedSnake-eagle`)
+      # plot(allEffects(`M_147_Southern BandedSnake-eagle`),main=paste0(spp[3,2]),selection = 1)
+      # Anova(`M_147_Southern BandedSnake-eagle`)
       # controlling for month
       summary(`Mo_147_Southern BandedSnake-eagle`)
       plot(allEffects(`Mo_147_Southern BandedSnake-eagle`),main=paste0(spp[3,2]), selection =1)
       Anova(`Mo_147_Southern BandedSnake-eagle`)
+      
+        {r <-  exp(predict(`Mo_147_Southern BandedSnake-eagle`,newdata = list(year=2017,Pentad="2735_3215",month="05")))/exp(predict(`Mo_147_Southern BandedSnake-eagle`,newdata = list(year=2016,Pentad="2735_3215",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
+      
     ### TawnyEagle
-      summary(M_134_TawnyEagle)
-      plot(allEffects(M_134_TawnyEagle),main=paste0(spp[4,2]),selection = 1)
-      Anova(M_134_TawnyEagle)
+      # summary(M_134_TawnyEagle)
+      # plot(allEffects(M_134_TawnyEagle),main=paste0(spp[4,2]),selection = 1)
+      # Anova(M_134_TawnyEagle)
       # controlling for month
       summary(Mo_134_TawnyEagle)
       plot(allEffects(Mo_134_TawnyEagle),main=paste0(spp[4,2]),selection = 1)
       Anova(Mo_134_TawnyEagle)
+      
+      {r <-  exp(predict(Mo_134_TawnyEagle,newdata = list(year=2017,Pentad="2925_3025",month="05")))/exp(predict(Mo_134_TawnyEagle,newdata = list(year=2016,Pentad="2925_3025",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
+      
     ### AfricanMarsh-harrier
-      summary(`M_167_AfricanMarsh-harrier`)
-      plot(allEffects(`M_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1) #large decrease
-      Anova(`M_167_AfricanMarsh-harrier`)
+      # summary(`M_167_AfricanMarsh-harrier`)
+      # plot(allEffects(`M_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1) #large decrease
+      # Anova(`M_167_AfricanMarsh-harrier`)
       # controlling for month
-      summary(`Mo_167_AfricanMarsh-harrier`)
+      summary(`Mo_167_AfricanMarsh-harrier`) # *** Significant
       plot(allEffects(`Mo_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1)
       Anova(`Mo_167_AfricanMarsh-harrier`)
+      
+      {r <-  exp(predict(`Mo_167_AfricanMarsh-harrier`,newdata = list(year=2017,Pentad="2925_3025",month="05")))/exp(predict(`Mo_167_AfricanMarsh-harrier`,newdata = list(year=2016,Pentad="2925_3025",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### BlackHarrier
-      summary(M_169_BlackHarrier)
-      plot(allEffects(M_169_BlackHarrier),main=paste0(spp[6,2]),selection = 1) #large decrease
-      Anova(M_169_BlackHarrier)
+      # summary(M_169_BlackHarrier)
+      # plot(allEffects(M_169_BlackHarrier),main=paste0(spp[6,2]),selection = 1) #large decrease
+      # Anova(M_169_BlackHarrier)
       # controlling for month
-      summary(Mo_169_BlackHarrier)
+      summary(Mo_169_BlackHarrier) # *** Significant
       plot(allEffects(Mo_169_BlackHarrier),main=paste0(spp[6,2]),selection = 1)
       Anova(Mo_169_BlackHarrier)
+      
+      {r <-  exp(predict(Mo_169_BlackHarrier,newdata = list(year=2017,Pentad="3415_1825",month="05")))/exp(predict(Mo_169_BlackHarrier,newdata = list(year=2016,Pentad="3415_1825",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### BatHawk
-      summary(M_131_BatHawk)
-      plot(allEffects(M_131_BatHawk),main=paste0(spp[7,2]),selection = 1)
-      Anova(M_131_BatHawk)
+      # summary(M_131_BatHawk)
+      # plot(allEffects(M_131_BatHawk),main=paste0(spp[7,2]),selection = 1)
+      # Anova(M_131_BatHawk)
       #controlling for month
       summary(Mo_131_BatHawk)
       plot(allEffects(Mo_131_BatHawk),main=paste0(spp[7,2]),selection = 1)
       Anova(Mo_131_BatHawk)
+     
+      {r <-  exp(predict(Mo_131_BatHawk,newdata = list(year=2017,Pentad="2350_2955",month="05")))/exp(predict(Mo_131_BatHawk,newdata = list(year=2016,Pentad="2350_2955",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### Pel'sFishing-owl
       summary(`M_370_Pel'sFishing-owl`)
       plot(allEffects(`M_370_Pel'sFishing-owl`),selection = 1,main=paste0(spp[8,2]))
       Anova(`M_370_Pel'sFishing-owl`)
+      
+      {r <-  exp(predict(`M_370_Pel'sFishing-owl`,newdata = list(year=2017,Pentad="1755_2550",month="05")))/exp(predict(`M_370_Pel'sFishing-owl`,newdata = list(year=2016,Pentad="1755_2550",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
       # controlling for month
-      summary(`Mo_370_Pel'sFishing-owl`)
-      plot(allEffects(`Mo_370_Pel'sFishing-owl`),selection = 1,main=paste0(spp[8,2]))
-      Anova(`Mo_370_Pel'sFishing-owl`)
+      # summary(`Mo_370_Pel'sFishing-owl`)
+      # plot(allEffects(`Mo_370_Pel'sFishing-owl`),selection = 1,main=paste0(spp[8,2]))
+      # Anova(`Mo_370_Pel'sFishing-owl`) ### EFFECT OF MONTH NOT SIGNIFICANT
+      
     ### BeardedVulture
-      summary(M_150_BeardedVulture)
-      plot(allEffects(M_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
-      Anova(M_150_BeardedVulture)
+      # summary(M_150_BeardedVulture)
+      # plot(allEffects(M_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
+      # Anova(M_150_BeardedVulture)
       #controlling for month
       summary(Mo_150_BeardedVulture)
       plot(allEffects(Mo_150_BeardedVulture),selection = 1,main=paste0(spp[9,2]))
       Anova(Mo_150_BeardedVulture)
+      
+      {r <-  exp(predict(Mo_150_BeardedVulture,newdata = list(year=2017,Pentad="3040_2710",month="05")))/exp(predict(Mo_150_BeardedVulture,newdata = list(year=2016,Pentad="3040_2710",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### CapeVulture
-      summary(M_106_CapeVulture)
-      plot(allEffects(M_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
-      Anova(M_106_CapeVulture)
+      # summary(M_106_CapeVulture)
+      # plot(allEffects(M_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
+      # Anova(M_106_CapeVulture)
       # controlling for month
-      summary(Mo_106_CapeVulture)
+      summary(Mo_106_CapeVulture) # *** Significant
       plot(allEffects(Mo_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
       Anova(Mo_106_CapeVulture)
+      
+      {r <-  exp(predict(Mo_106_CapeVulture,newdata = list(year=2017,Pentad="3040_2710",month="05")))/exp(predict(Mo_106_CapeVulture,newdata = list(year=2016,Pentad="3040_2710",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### HoodedVulture
-      summary(M_110_HoodedVulture)
-      plot(allEffects(M_110_HoodedVulture),selection = 1,main=paste0(spp[11,2]))
-      Anova(M_110_HoodedVulture)
+      # summary(M_110_HoodedVulture)
+      # plot(allEffects(M_110_HoodedVulture),selection = 1,main=paste0(spp[11,2]))
+      # Anova(M_110_HoodedVulture)
       # controlling for month
       summary(Mo_110_HoodedVulture)
       plot(allEffects(Mo_110_HoodedVulture),selection = 1,main=paste0(spp[11,2]))
       Anova(Mo_110_HoodedVulture)
+      
+      {r <-  exp(predict(Mo_110_HoodedVulture,newdata = list(year=2017,Pentad="2505_3150",month="05")))/exp(predict(Mo_110_HoodedVulture,newdata = list(year=2016,Pentad="2505_3150",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### Lappet-facedVulture
-      summary(`M_108_Lappet-facedVulture`)
+      summary(`M_108_Lappet-facedVulture`) # * Significant
       plot(allEffects(`M_108_Lappet-facedVulture`),selection = 1,main=paste0(spp[12,2]))
       Anova(`M_108_Lappet-facedVulture`)
+      
+      {r <-  exp(predict(`M_108_Lappet-facedVulture`,newdata = list(year=2017,Pentad="2900_2425",month="05")))/exp(predict(`M_108_Lappet-facedVulture`,newdata = list(year=2016,Pentad="2900_2425",month="05"))) 
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
       # controlling for month
-      summary(`Mo_108_Lappet-facedVulture`)
-      plot(allEffects(`Mo_108_Lappet-facedVulture`),selection = 1,main=paste0(spp[12,2]))
-      Anova(`Mo_108_Lappet-facedVulture`)
+      # summary(`Mo_108_Lappet-facedVulture`)
+      # plot(allEffects(`Mo_108_Lappet-facedVulture`),selection = 1,main=paste0(spp[12,2]))
+      # Anova(`Mo_108_Lappet-facedVulture`) ### EFFECT OF MONTH NOT SIGNIFICANT
+      
     ### White-backedVulture
-      summary(`M_107_White-backedVulture`)
-      plot(allEffects(`M_107_White-backedVulture`),selection = 1,main=paste0(spp[13,2]))
-      Anova(`M_107_White-backedVulture`)
+      # summary(`M_107_White-backedVulture`)
+      # plot(allEffects(`M_107_White-backedVulture`),selection = 1,main=paste0(spp[13,2]))
+      # Anova(`M_107_White-backedVulture`)
       # controlling for month
       summary(`Mo_107_White-backedVulture`)
       plot(allEffects(`Mo_107_White-backedVulture`),selection = 1,main=paste0(spp[13,2]))
       Anova(`Mo_107_White-backedVulture`)
+      
+      {r <-  exp(predict(`Mo_107_White-backedVulture`,newdata = list(year=2017,Pentad="3355_2320",month="05")))/exp(predict(`Mo_107_White-backedVulture`,newdata = list(year=2016,Pentad="3355_2320",month="05")))
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
     ### White-headedVulture
-      summary(`M_109_White-headedVulture`)
+      summary(`M_109_White-headedVulture`) # *** Significant
       plot(allEffects(`M_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
       Anova(`M_109_White-headedVulture`)
+      
+      {r <-  exp(predict(`M_109_White-headedVulture`,newdata = list(year=2017,Pentad="2520_3135",month="05")))/exp(predict(`M_109_White-headedVulture`,newdata = list(year=2016,Pentad="2520_3135",month="05")))
+        {if(r>1) {print(paste0(round((r-1)*100,4),"% increase"))}}
+        {if(r==1){print(paste0("No Change over year"))}}
+        {if(r<1) {print(paste0(round((1-r)*100,4),"% decrease"))}}}
+      
       # controlling for month
-      summary(`Mo_109_White-headedVulture`)
-      plot(allEffects(`Mo_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
-      Anova(`Mo_109_White-headedVulture`)
+      # summary(`Mo_109_White-headedVulture`)
+      # plot(allEffects(`Mo_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
+      # Anova(`Mo_109_White-headedVulture`) ### EFFECT OF MONTH NOT SIGNIFICANT
       
 #### END ####
