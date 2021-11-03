@@ -61,12 +61,12 @@ for (l in 1:nrow(spp)){
 #### MODEL ANALYSIS ####
 
 ## showing percentage change of reporting rate for all species
-for (k in 1:nrow(spp)){
-  zz <- summary(get(paste0(spp[k,2],"_emm")))$response[2]/summary(get(paste0(spp[k,2],"_emm")))$response[1]
+for (q in 1:nrow(spp)){
+  zz <- summary(get(paste0(spp[q,2],"_emm")))$response[2]/summary(get(paste0(spp[q,2],"_emm")))$response[1]
   
-  {if (zz<1) {print(paste0(spp[k,2],": ",round(((1-zz)*100),4),"% decrease in reporting rate between SABAP 1 and 2"))}}
-  {if (zz>1) {print(paste0(spp[k,2],": ",round(((zz-1)*100),4),"% increase in reporting rate between SABAP 1 and 2"))}}
-  {if (zz==1) {print(paste0(spp[k,2],": There is no change in reporting rate between SABAP 1 and 2"))}}
+  {if (zz<1) {print(paste0(spp[q,2],": ",round(((1-zz)*100),4),"% decrease in reporting rate between SABAP 1 and 2"))}}
+  {if (zz>1) {print(paste0(spp[q,2],": ",round(((zz-1)*100),4),"% increase in reporting rate between SABAP 1 and 2"))}}
+  {if (zz==1) {print(paste0(spp[q,2],": There is no change in reporting rate between SABAP 1 and 2"))}}
   cat("\n")
 }
 
