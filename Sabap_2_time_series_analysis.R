@@ -307,11 +307,13 @@ for (f in 1:nrow(spp)){
   dd <- (((as.numeric(exp(get(paste0("Mo_",spp[f,1],"_",spp[f,2]))$coefficients[2]))))-1)*100
   deltaS1v2 <-  append(deltaS1v2, cc)        
   deltaS2 <-  append(deltaS2, dd) 
+}
+      
+  {M_comparison <- lm(deltaS2~deltaS1v2)
+  summary(M_comparison)
+  plot(deltaS2~deltaS1v2, xlab = "Reporting rate change between SABAP 1 and 2 (%)", ylab = "SABAP 2 annual reporting rate change %",pch=16)
+  abline(M_comparison)
+  g <- spp[1:nrow(spp),2]
+  text(deltaS1v2,deltaS2,g,pos=1)
                       }
-      
-M_comparison <- lm(deltaS2~deltaS1v2)
-summary(M_comparison)
-plot(deltaS2~deltaS1v2, xlab = "Reporting rate change between SABAP 1 and 2 (%)", ylab = "SABAP 2 annual reporting rate change %",pch=16)
-abline(M_comparison)
-      
 #### END ####
