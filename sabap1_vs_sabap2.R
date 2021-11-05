@@ -52,7 +52,7 @@ for (l in 1:nrow(spp)){
   assign(paste0("S1v2_",spp[l,2]),glm(cbind(sightings, (cards-sightings))~periodcat, family=quasibinomial, data=get(paste0(spp[l,2],"_data"))))
   
   # the emmeans gives you the ****back transformed**** reporting rates for each period category, eff size gives the difference between the means and associated confidence interval
-  assign(paste0(spp[l,2],"_emm"), emmeans(object = get(paste0("S1v2_",spp[l,2])), "periodcat", type="response"))
+  assign(paste0(spp[l,2],"_emm"), emmeans(object = get(paste0("S1v2_",spp[l,2])), "periodcat", type="scale"))
   # assign(paste0(spp[l,2],"_eff"),eff_size(get(paste0(spp[l,2],"_emm")), sigma = sigma(get(paste0("S1v2_",spp[1,2]))), edf = df.residual(get(paste0("S1v2_",spp[1,2]))))) # unused effect estimator, will use own function
   plot(allEffects(get(paste0("S1v2_",spp[l,2]))), main = paste0(spp[l,2]),ylab="Reporting Rate",xlab="SABAP Period")
   {if (l==nrow(spp)){beep(3)}}
@@ -62,7 +62,7 @@ for (l in 1:nrow(spp)){
 
 ## showing percentage change of reporting rate for all species
 for (q in 1:nrow(spp)){
-  zz <- summary(get(paste0(spp[q,2],"_emm")))$response[2]/summary(get(paste0(spp[q,2],"_emm")))$response[1]
+  zz <- exp(summary(get(paste0(spp[q,2],"_emm")))$emmean[2])/exp(summary(get(paste0(spp[q,2],"_emm")))$emmean[1])
   
   {if (zz<1) {print(paste0(spp[q,2],": ",round(((1-zz)*100),4),"% decrease in reporting rate between SABAP 1 and 2"))}}
   {if (zz>1) {print(paste0(spp[q,2],": ",round(((zz-1)*100),4),"% increase in reporting rate between SABAP 1 and 2"))}}
@@ -144,58 +144,59 @@ for (q in 1:nrow(spp)){
   
 #### UNUSED CODE ####
 #   # BateleurBateleur
-#   BateleurBateleur_emm #back transformed reporting rate for the category
+  BateleurBateleur_emm #back transformed reporting rate for the category
 #   BateleurBateleur_eff #difference between the means and associated confidence interval
 #   
 #   # MartialEagle
-#   MartialEagle_emm #back transformed reporting rate for the category
+  MartialEagle_emm #back transformed reporting rate for the category
 #   MartialEagle_eff #difference between the means and associated confidence interval
 #   
 #   # Southern BandedSnake-eagle
-#   `Southern BandedSnake-eagle_emm` #back transformed reporting rate for the category
+  `Southern BandedSnake-eagle_emm` #back transformed reporting rate for the category
 #   `Southern BandedSnake-eagle_eff` #difference between the means and associated confidence interval
 #   
 #   # TawnyEagle
-#   TawnyEagle_emm #back transformed reporting rate for the category
+  TawnyEagle_emm #back transformed reporting rate for the category
 #   TawnyEagle_eff #difference between the means and associated confidence interval
 #   
 #   # AfricanMarsh-harrier
-#   `AfricanMarsh-harrier_emm` #back transformed reporting rate for the category
+  `AfricanMarsh-harrier_emm` #back transformed reporting rate for the category
 #   `AfricanMarsh-harrier_eff` #difference between the means and associated confidence interval
 #   
 #   # BlackHarrier
-#   BlackHarrier_emm #back transformed reporting rate for the category
+  BlackHarrier_emm #back transformed reporting rate for the category
 #   BlackHarrier_eff #difference between the means and associated confidence interval
 #   
 #   # BatHawk
-#   BatHawk_emm #back transformed reporting rate for the category
+  BatHawk_emm #back transformed reporting rate for the category
 #   BatHawk_eff #difference between the means and associated confidence interval
 #   
 #   # Pel'sFishing-owl
-#   `Pel'sFishing-owl_emm` #back transformed reporting rate for the category
+  `Pel'sFishing-owl_emm` #back transformed reporting rate for the category
 #   `Pel'sFishing-owl_eff` #difference between the means and associated confidence interval
 #   
 #   # BeardedVulture
-#   BeardedVulture_emm #back transformed reporting rate for the category
+  BeardedVulture_emm #back transformed reporting rate for the category
 #   BeardedVulture_eff #difference between the means and associated confidence interval
 #   
 #   # CapeVulture
-#   CapeVulture_emm #back transformed reporting rate for the category
+  CapeVulture_emm #back transformed reporting rate for the category
 #   CapeVulture_eff #difference between the means and associated confidence interval
 #   
 #   # HoodedVulture
-#   HoodedVulture_emm #back transformed reporting rate for the category
+  HoodedVulture_emm #back transformed reporting rate for the category
 #   HoodedVulture_eff #difference between the means and associated confidence interval
 #   
 #   # Lappet-facedVulture
-#   `Lappet-facedVulture_emm` #back transformed reporting rate for the category
+  `Lappet-facedVulture_emm` #back transformed reporting rate for the category
 #   `Lappet-facedVulture_eff` #difference between the means and associated confidence interval
 #   
 #   # White-backedVulture
-#   `White-backedVulture_emm` #back transformed reporting rate for the category
+  `White-backedVulture_emm` #back transformed reporting rate for the category
 #   `White-backedVulture_eff` #difference between the means and associated confidence interval
 #   
 #   # White-headedVulture
-#   `White-headedVulture_emm` #back transformed reporting rate for the category
+  `White-headedVulture_emm` #back transformed reporting rate for the category
 #   `White-headedVulture_eff` #difference between the means and associated confidence interval
+  
 #### END ####
