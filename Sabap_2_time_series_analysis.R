@@ -118,7 +118,7 @@ plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
       # Anova(M_142_MartialEagle)
       # controlling for month
       summary(Mo_142_MartialEagle)
-      plot(allEffects(Mo_142_MartialEagle),main=paste0(spp[2,2]),selection = 1)
+      plot(allEffects(Mo_142_MartialEagle),main=paste0(spp[2,2]),selection = 1, ylab = "log(Reporting Rate)")
       Anova(Mo_142_MartialEagle)
       
         {r <-  exp(predict(Mo_142_MartialEagle,newdata = list(year=2017,Pentad="2850_2955",month="05")))/exp(predict(Mo_142_MartialEagle,newdata = list(year=2016,Pentad="2850_2955",month="05"))) 
@@ -162,7 +162,7 @@ plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
       # Anova(`M_167_AfricanMarsh-harrier`)
       # controlling for month
       summary(`Mo_167_AfricanMarsh-harrier`) # *** Significant
-      plot(allEffects(`Mo_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1)
+      plot(allEffects(`Mo_167_AfricanMarsh-harrier`),main=paste0(spp[5,2]),selection = 1, xlab="log(Reporting Rate)")
       Anova(`Mo_167_AfricanMarsh-harrier`)
       
       {r <-  exp(predict(`Mo_167_AfricanMarsh-harrier`,newdata = list(year=2017,Pentad="2925_3025",month="05")))/exp(predict(`Mo_167_AfricanMarsh-harrier`,newdata = list(year=2016,Pentad="2925_3025",month="05"))) 
@@ -233,7 +233,7 @@ plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
       # Anova(M_106_CapeVulture)
       # controlling for month
       summary(Mo_106_CapeVulture) # *** Significant
-      plot(allEffects(Mo_106_CapeVulture),selection = 1,main=paste0(spp[10,2]))
+      plot(allEffects(Mo_106_CapeVulture),selection = 1,main=paste0(spp[10,2]), xlab="log(Reporting Rate)")
       Anova(Mo_106_CapeVulture)
       
       {r <-  exp(predict(Mo_106_CapeVulture,newdata = list(year=2017,Pentad="3040_2710",month="05")))/exp(predict(Mo_106_CapeVulture,newdata = list(year=2016,Pentad="3040_2710",month="05"))) 
