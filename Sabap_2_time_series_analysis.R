@@ -18,7 +18,8 @@
   {library(nlme)
   library(lme4)
   library(MASS) # to call quasi families
-  library(effects) # for plotting mixed effect models
+  library(effects)# for plotting mixed effect models
+  library(emmeans)
   library(beepr) #this package is only required if you want your PC to play a sound when your model creation is finished
   library(car)
   # model selection:
