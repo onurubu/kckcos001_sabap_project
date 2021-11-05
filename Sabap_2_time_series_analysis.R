@@ -98,8 +98,7 @@ for (k in 1:nrow(spp)){
       # Anova(M_151_BateleurBateleur)
       # controlling for month
       summary(Mo_151_BateleurBateleur) # *** Significant
-      
-plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
+      plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
       Anova(Mo_151_BateleurBateleur)
       
       {r <-  exp(predict(Mo_151_BateleurBateleur,newdata = list(year=2017,Pentad="1755_2550",month="05")))/exp(predict(Mo_151_BateleurBateleur,newdata = list(year=2016,Pentad="1755_2550",month="05"))) 
@@ -298,5 +297,21 @@ plot(allEffects(Mo_151_BateleurBateleur),selection = 1,main=paste0(spp[1,2]))
       # summary(`Mo_109_White-headedVulture`)
       # plot(allEffects(`Mo_109_White-headedVulture`),selection = 1,main=paste0(spp[14,2]))
       # Anova(`Mo_109_White-headedVulture`) ### EFFECT OF MONTH NOT SIGNIFICANT
+      
+#### COMPARING ANALYSES ####
+
+for (f in 1:nrow(spp)){
+  {if (f==1) {deltaS1v2 <- c()}}
+  {if (f==1) {deltaS2 <- c()}}
+  cc <- ((exp(summary(get(paste0(spp[f,2],"_emm")))$emmean[2])/exp(summary(get(paste0(spp[f,2],"_emm")))$emmean[1]))-1)*100
+  dd <- (((as.numeric(exp(get(paste0("Mo_",spp[f,1],"_",spp[f,2]))$coefficients[2]))))-1)*100
+  deltaS1v2 <-  append(deltaS1v2, cc)        
+  deltaS2 <-  append(deltaS2, dd) 
+                      }
+      
+M_comparison <- lm(deltaS2~deltaS1v2)
+summary(M_comparison)
+plot(deltaS2~deltaS1v2, xlab = "Reporting rate change between SABAP 1 and 2 (%)", ylab = "SABAP 2 annual reporting rate change %",pch=16)
+abline(M_comparison)
       
 #### END ####
